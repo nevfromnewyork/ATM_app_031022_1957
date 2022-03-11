@@ -1,0 +1,50 @@
+"""
+This is a basic ATM Application.
+
+This is a command line application that mimics the actions of an ATM.
+
+"""
+
+accounts = [
+    {
+    "pin": 123456,
+    "balance" : 1436.19},
+    {
+    "pin" : 246802,
+    "balance": 3571.87},
+    {
+    "pin": 135791,
+    "balance" : 543.79},
+    {
+    "pin" : 123987,
+    "balance": 25.89},
+    {
+    "pin" : 269731,
+    "balance": 3258.42}
+]
+
+def atm_app(pin):
+    for account in accounts:
+    
+        if pin == account['pin']:
+            print("Welcome to your bank account. How can I help you today?")
+            action = input("Check balance (b), make a deposit (d), or make a withdrawal (w)?")
+            
+            if action == "b":
+                print(f"Great. Your current account balance is: ${account['balance']:,.2f}.")
+                print("Thank you and aave a great day.")
+                
+            if action == "d":
+                deposit = input("Great. How much would you like to deposit?: $")
+                amount_after_deposit = account['balance'] + float(deposit)
+                print(f"Great. Your new account balance is: ${amount_after_deposit:,.2f}.")
+                print("Thank you and aave a great day.")
+                account['balance'] = amount_after_deposit
+                
+            if action == "w":
+                withdrawal = input("Great. How much would you like to withdraw?: $")
+                amount_after_withdrawal = account['balance'] - float(withdrawal)
+                print(f"Great. Your new account balance is: ${amount_after_withdrawal:,.2f}.")
+                print("Thank you and aave a great day.")
+                account['balance'] = amount_after_withdrawal
+atm_app(123456)                
